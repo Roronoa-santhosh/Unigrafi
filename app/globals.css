@@ -1,26 +1,374 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:is(.dark *));
+
+/* ─────────────────────────────────────────
+   TAILWIND 4 THEME
+   Your custom classes live here
+   Use as: bg-bg-light, text-ink-primary,
+   bg-accent, text-accent etc
+───────────────────────────────────────── */
+@theme {
+  --color-test: #e57373;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* ─────────────────────────────────────────
+   SHADCN CSS VARIABLES
+   shadcn components read these directly
+   Dark mode switching happens here
+───────────────────────────────────────── */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 247 244 239;
+    --foreground: 26 22 18;
+    --card: 255 255 255;
+    --card-foreground: 26 22 18;
+    --popover: 255 255 255;
+    --popover-foreground: 26 22 18;
+    --primary: 232 124 46;
+    --primary-foreground: 255 255 255;
+    --secondary: 240 235 227;
+    --secondary-foreground: 26 22 18;
+    --muted: 240 235 227;
+    --muted-foreground: 154 144 128;
+    --accent: 240 235 227;
+    --accent-foreground: 26 22 18;
+    --destructive: 192 57 43;
+    --destructive-foreground: 255 255 255;
+    --border: 232 227 220;
+    --input: 232 227 220;
+    --ring: 232 124 46;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 14 12 10;
+    --foreground: 240 237 232;
+    --card: 28 25 22;
+    --card-foreground: 240 237 232;
+    --popover: 28 25 22;
+    --popover-foreground: 240 237 232;
+    --primary: 232 124 46;
+    --primary-foreground: 255 255 255;
+    --secondary: 42 37 32;
+    --secondary-foreground: 240 237 232;
+    --muted: 42 37 32;
+    --muted-foreground: 106 98 88;
+    --accent: 42 37 32;
+    --accent-foreground: 240 237 232;
+    --destructive: 229 115 115;
+    --destructive-foreground: 255 255 255;
+    --border: 42 37 32;
+    --input: 42 37 32;
+    --ring: 232 124 46;
+
+    /* Dark theme overrides for your custom Tailwind color tokens */
+    --color-bg-light: #0e0c0a;
+    --color-bg-surface: #1c1916;
+    --color-bg-hover: #2a2520;
+    --color-bg-border: #2a2520;
+    --color-bg-dark: #0e0c0a;
+    --color-bg-dsurf: #1c1916;
+    --color-bg-dhover: #2a2520;
+    --color-bg-dborder: #2a2520;
+
+    --color-ink-primary: #f0ede8;
+    --color-ink-secondary: #8a8278;
+    --color-ink-muted: #6a6258;
+    --color-ink-invert: #f0ede8;
+    --color-ink-isec: #8a8278;
+    --color-ink-imuted: #6a6258;
+
+    --color-accent: #e87c2e;
+    --color-accent-hover: #d4691a;
+    --color-accent-subtle: #e87c2e1a;
+
+    --color-ok: #52b788;
+    --color-ok-light: #74c69d;
+    --color-bad: #e57373;
+    --color-bad-light: #f28b82;
+
+    --color-background: #0e0c0a;
+    --color-foreground: #f0ede8;
+    --color-card: #1c1916;
+    --color-card-foreground: #f0ede8;
+    --color-popover: #1c1916;
+    --color-popover-foreground: #f0ede8;
+    --color-primary: #e87c2e;
+    --color-primary-foreground: #ffffff;
+    --color-secondary: #2a2520;
+    --color-secondary-foreground: #f0ede8;
+    --color-muted: #2a2520;
+    --color-muted-foreground: #8a8278;
+    --color-accent-DEFAULT: #2a2520;
+    --color-accent-foreground: #f0ede8;
+    --color-destructive: #e57373;
+    --color-destructive-foreground: #ffffff;
+    --color-border: #2a2520;
+    --color-input: #2a2520;
+    --color-ring: #e87c2e;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─────────────────────────────────────────
+   BASE STYLES
+
+───────────────────────────────────────── */
+
+@theme {
+  --font-display: var(--font-clash);
+}
+
+@theme {
+  /* ── FONTS ── */
+  /* globals.css @theme */
+
+  /* ── BACKGROUNDS ── */
+  --color-bg-light: #f7f4ef;
+  --color-bg-surface: #f5f5f5;
+  --color-bg-hover: #f0ebe3;
+  --color-bg-border: #e8e3dc;
+  --color-bg-dark: #0e0c0a;
+  --color-bg-dsurf: #1c1916;
+  --color-bg-dhover: #2a2520;
+  --color-bg-dborder: #2a2520;
+
+  /* ── TEXT ── */
+  --color-ink-primary: #1a1612;
+  --color-ink-secondary: #5a5248;
+  --color-ink-muted: #9a9080;
+  --color-ink-invert: #f0ede8;
+  --color-ink-isec: #8a8278;
+  --color-ink-imuted: #6a6258;
+
+  /* ── ACCENT ── */
+  --color-accent: #e87c2e;
+  --color-accent-hover: #d4691a;
+  --color-accent-subtle: #e87c2e1a;
+
+  /* ── STATUS ── */
+  --color-ok: #2d6a4f;
+  --color-ok-light: #52b788;
+  --color-bad: #c0392b;
+  --color-bad-light: #e57373;
+
+  /* ── SHADCN BRIDGE ── */
+  /* These make shadcn components use your colours */
+  --color-background: #f7f4ef;
+  --color-foreground: #1a1612;
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1612;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1a1612;
+  --color-primary: #e87c2e;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f0ebe3;
+  --color-secondary-foreground: #1a1612;
+  --color-muted: #f0ebe3;
+  --color-muted-foreground: #9a9080;
+  --color-accent-DEFAULT: #f0ebe3;
+  --color-accent-foreground: #1a1612;
+  --color-destructive: #c0392b;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e8e3dc;
+  --color-input: #e8e3dc;
+  --color-ring: #e87c2e;
+
+  /* ── BORDER RADIUS ── */
+  --radius-card: 14px;
+  --radius-badge: 20px;
+  --radius-btn: 10px;
+
+  /* ── SHADOWS ── */
+  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --shadow-card-dark: 0 16px 40px rgba(0, 0, 0, 0.5);
+
+  /* ── EASING ── */
+  --ease-spring: cubic-bezier(0.22, 0.68, 0, 1.2);
+}
+
+@layer base {
+  /* Box sizing */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Default border colour */
+  * {
+    border-color: var(--color-bg-border);
+  }
+
+  /* Body */
+  body {
+    background-color: var(--color-bg-light);
+    color: var(--color-ink-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Dark mode body */
+  .dark body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-ink-invert);
+    border-color: var(--color-bg-dborder);
+  }
+
+  /* Headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-ink-primary);
+  }
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    color: var(--color-ink-invert);
+  }
+
+  /* Links */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Images */
+  img,
+  video {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Inputs */
+  input,
+  textarea,
+  select {
+    background-color: transparent;
+    outline: none;
+    font-family: var(--font-sans);
+  }
+
+  /* Remove default button styles */
+  button {
+    cursor: pointer;
+    font-family: var(--font-sans);
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-light);
+  }
+  .dark ::-webkit-scrollbar-track {
+    background: var(--color-bg-dark);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-bg-border);
+    border-radius: 9999px;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: var(--color-bg-dborder);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-ink-muted);
+  }
+
+  /* Text selection */
+  ::selection {
+    background: #e87c2e30;
+    color: #e87c2e;
+  }
+}
+/* globals.css — add to @layer base */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ─────────────────────────────────────────
+   CUSTOM UTILITIES
+   Use as regular Tailwind classes
+───────────────────────────────────────── */
+
+/* iPhone safe area bottom padding */
+@utility safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Hide scrollbar but keep scrolling */
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Orange gradient text — for hero headings */
+@utility text-gradient {
+  background: linear-gradient(135deg, #e87c2e, #d4691a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphism — for overlays on poster images */
+@utility glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Dark glass — for button overlays on poster cards */
+@utility glass-dark {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Poster card 3:4 ratio wrapper */
+@utility poster-ratio {
+  position: relative;
+  width: 100%;
+  padding-top: 133.33%;
+  overflow: hidden;
+}
+
+/* Center absolutely inside poster-ratio */
+@utility poster-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@theme inline {
+  --animate-shiny-text: shiny-text 8s infinite;
+  @keyframes shiny-text {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+  30%, 60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
 }
