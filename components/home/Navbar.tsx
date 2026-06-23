@@ -1,8 +1,10 @@
 import React from 'react'
 import Search from '@/components/home/Search';
 import Profile from '@/components/home/ProfileIcon';
+import {auth} from '@/auth';
 
-function Navbar() {
+async function Navbar() {
+  const session = await auth();
   return (<>
 
      <header className='flex justify-between p-5 bg-bg-surface border-1 border-bg-border fixed w-full z-50 '>
@@ -15,7 +17,7 @@ function Navbar() {
 </h1>
        </div>
        <div><Search/></div>
-       <div className='hidden sm:flex'><Profile/></div>
+       <div className='hidden sm:flex'><Profile session={session}/></div>
     </header>
     <div className="hidden sm:block  sm:h-22" />
     <div className=" sm:hidden  h-20" />

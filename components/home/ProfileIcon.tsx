@@ -1,29 +1,34 @@
-
+'use client'
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
+
 } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 
-import authAction from "@/actions/authAction";
-import {auth} from '@/auth';
+import {useAuthDialog} from '@/components/providers/auth-provider';
+import { Session } from "next-auth"
 
 
-async function ProfileIcon() {
 
-   const session = await auth();
+ function ProfileIcon({
+  session,
+}: {
+  session:  Session | null
+}){
+  const {openLogin} = useAuthDialog();
+
    
    if(!session){
     return (
       <div>
-       <form action={authAction}>
-        <button type = "submit" >
-        singn in
-      </button>
-        </form>
-
+       
+        <Button onClick={openLogin} className="p-3 px-5 ">Login</Button>
+        
       </div>
     )
+    
    }
 
   return (
