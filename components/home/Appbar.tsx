@@ -5,10 +5,13 @@ import {
   HomeIcon,
   Squares2X2Icon,
   UserIcon,
-  SparklesIcon
+  SparklesIcon,
 } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { Session } from "next-auth";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const desktopNavLinks = [
   {
@@ -70,7 +73,7 @@ const mobileNavLinks = [
   },
 ];
 
-function Appbar() {
+function Appbar({ session }: { session: Session | null }) {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
@@ -107,6 +110,41 @@ function Appbar() {
               );
             }
 
+            if (link.href === "/profile") {
+              return (
+                <li key={link.name} className="flex-1">
+                  <Link
+                    href={link.href}
+                    className={`flex flex-col items-center justify-center h-16 gap-1 ${
+                      active
+                        ? "text-accent"
+                        : "text-ink-primary hover:text-ink-secondary"
+                    }`}
+                  >
+                    {session?.user?.image ? (
+                      <div>
+                        <Avatar size="lg" className="mr-3">
+                          <AvatarImage
+                            src={session.user?.image || ""}
+                            alt="@shadcn"
+                          />
+                          <AvatarFallback>
+                            {" "}
+                            {session.user?.name?.charAt(0) ?? "U"}
+                          </AvatarFallback>
+                        </Avatar>
+                      </div>
+                    ) : (
+                      <UserIcon className="w-6 h-6 text-ink-primary" />
+                    )}
+
+                    <span className="text-xs font-medium text-center">
+                      {link.name}
+                    </span>
+                  </Link>
+                </li>
+              );
+            }
             return (
               <li key={link.name} className="flex-1">
                 <Link

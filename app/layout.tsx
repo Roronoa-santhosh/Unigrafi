@@ -3,9 +3,11 @@ import "./globals.css";
 
 import localFont from "next/font/local"
 import { Inter } from "next/font/google"
+import {AuthProvider} from "@/components/providers/auth-provider"
+import {auth} from "@/auth"
 
 const clashDisplay = localFont({
-  src: "../public/fonts/ClashDisplay-Variable.woff2",
+  src: "../public/Fonts/ClashDisplay-Variable.woff2",
   variable: "--font-clash",
   display: 'swap',
 })
@@ -25,13 +27,19 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) { 
+ 
+ 
   return (
     <html
       className={`${shareTech.variable} ${clashDisplay.variable } h-full antialiased`}
-    >
+    ><AuthProvider>
+      
+      <body className="min-h-full flex flex-col">{children}
+      
+      </body>
+    </AuthProvider>
 
-      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
