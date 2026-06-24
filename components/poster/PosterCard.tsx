@@ -21,7 +21,7 @@ interface PosterCardProps {
 }
 
 export default function PosterCard({
-  session,  
+  session,
   id,
   title,
   designerName,
@@ -36,40 +36,43 @@ export default function PosterCard({
   const [addedToCart, setAddedToCart] = useState(false);
   const [addedToWall, setAddedToWall] = useState(false);
 
-  const {openLogin} = useAuthDialog();
+  const { openLogin } = useAuthDialog();
 
   const handleWishlist = () => {
-  if (!session) {
-    openLogin();
-    return;
-  }
+    if (!session) {
+      openLogin();
+     
+      return;
+    }
 
-  setWished((prev) => !prev);
 
-  // TODO:
-  // wishlist API
-};
+
+    setWished((prev) => !prev);
+
+    // TODO:
+    // wishlist API
+  };
 
   const handleAddToCart = () => {
-  if (!session) {
-    openLogin();
-    return;
-  }
+    if (!session) {
+      openLogin();
+      return;
+    }
 
-  setAddedToCart((prev) => !prev);
-};
+    setAddedToCart((prev) => !prev);
+  };
 
-const handleAddToWall = () => {
-  if (!session) {
-    openLogin();
-    return;
-  }
+  const handleAddToWall = () => {
+    if (!session) {
+      openLogin();
+      return;
+    }
 
-  setAddedToWall(prev => !prev);
+    setAddedToWall((prev) => !prev);
 
-  // TODO:
-  // add to wall store
-};
+    // TODO:
+    // add to wall store
+  };
 
   return (
     <div
@@ -117,7 +120,7 @@ const handleAddToWall = () => {
         className="block"
       >
         {/* Image */}
-        <div className="relative aspect-[3/4] overflow-hidden">
+        <div className="relative aspect-3/4 overflow-hidden">
           <Image
             src={mockupUrl}
             alt={`${title} frame mockup`}
@@ -130,7 +133,7 @@ const handleAddToWall = () => {
           />
 
           {/* Poster */}
-         <div className="absolute left-[10.5%] top-[7%] h-[95%] w-[79%] overflow-hidden">
+          <div className="absolute left-[10.5%] top-[7%] h-[95%] w-[79%] overflow-hidden">
             <Image
               src={posterImageUrl}
               alt={title}
@@ -209,7 +212,7 @@ const handleAddToWall = () => {
                       : "bg-accent hover:bg-accent-hover"
                   }
                 `}
-                          >
+            >
               {addedToWall ? "Added to Wall ✓" : "+ Wall"}
             </button>
           </div>

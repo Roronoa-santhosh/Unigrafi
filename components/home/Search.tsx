@@ -23,7 +23,7 @@ function SearchBarContent() {
     <ButtonGroup className="">
       <Input
         placeholder="Search poster , artist ,collections..."
-        className="w-[clamp(50px,50vw,600px)] p-[clamp(10px,3vw,20px)]  rounded-lg border-2 border-bg-border bg-bg-surface text-ink-primary placeholder:text-ink-primary/50 placeholder:bg-bg-light"
+        className="w-[clamp(150px,35vw,400px)] p-[clamp(10px,3vw,20px)]  rounded-lg border-2 border-bg-border bg-bg-surface text-ink-primary placeholder:text-ink-primary/50 placeholder:bg-bg-light"
       />
       <Button
         variant="outline"
