@@ -15,13 +15,8 @@ export default function HomePage() {
           <h1 className="font-display  font-extrabold text-2xl lg-4xl ">
             Top Categories
           </h1>
-          <Link
-            href="/categories"
-        
-          >
-                 <Button>
-              View All
-            </Button>
+          <Link href="/categories">
+            <Button className="bg-bg-surface text-orange-400 hover:text-black">View All</Button>
           </Link>
         </div>
         <CategoryJist />
@@ -32,12 +27,8 @@ export default function HomePage() {
           <h1 className="font-display  font-extrabold text-2xl lg-4xl ">
             Trending Posters
           </h1>
-          <Link
-            href="/explore"
-          >
-                 <Button>
-              View All
-            </Button>
+          <Link href="/explore">
+            <Button className="bg-bg-surface text-orange-400 hover:text-black">View All</Button>
           </Link>
         </div>
         <Trending />
@@ -45,17 +36,11 @@ export default function HomePage() {
 
       <div className="m-2 mt-5">
         <div className="flex justify-center lg:justify-between m-2 gap-5">
-          <h1 className="font-display  font-extrabold text-4xl ">
+          <h1 className="font-display  font-extrabold text-2xl lg-4xl ">
             Top Designers
           </h1>
-          <Link
-            href="/designers"
-          
-          >
-            <Button>
-              View All
-            </Button>
-            
+          <Link href="/designers">
+            <Button className="bg-bg-surface text-orange-400 hover:text-black">View All</Button>
           </Link>
         </div>
 
